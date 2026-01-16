@@ -14,9 +14,9 @@ Interview Question Generator
 ## MVP Features
 
 ### Must Have
-- 
-- 
-- 
+- Select interview topic
+- Generate interview questions
+- Display questions
 
 ### Should Have
 - 
