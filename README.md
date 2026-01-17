@@ -35,7 +35,7 @@ your repo access and to practice PR'ing with your team *before* you start
 coding!
 
 - Teammate Ben Tran #1: [GitHub](https://github.com/windwalker46) / [LinkedIn](https://www.linkedin.com/in/bentran4606/)
-- Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Teammate Rajneesh Kaur #2: [GitHub](https://github.com/rajneeshkaur19) / [LinkedIn](https://www.linkedin.com/in/rajneesh-k-892173339/)
 
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
