@@ -25,18 +25,28 @@ Interview Question Generator
 
 ## MVP Features
 The interview questions generator MVP focuses on delivering a simple, effective, and a realistic interview practice experience.
+- Role and topic selection for targeted interview preparation
+- Generation of interview questions based on selected inputs
+- One-question-at-a-time interview flow
+- Answer submission with limited attempts per question
+- Basic feedback with reference answers
+- Progress indicator showing current question status
+- End-of-session performance summary
+- Clean, simple, and distraction-free user interface
 
 
 ### Must Have
 - Select interview role and topic 
 - Generate interview questions
 - Display questions
+- One-question-at-a-time interview flow
+- Attempt limitations
 - Check if correct/incorrect
 - Immediate feedback
-- Attempt limitations
 - Progress tracking
 - Result summary
 - simple and clean UI
+- 
 
 ### Should Have
 - Multiple difficulty Levels: Easy/Medium/Hard
@@ -49,6 +59,7 @@ The interview questions generator MVP focuses on delivering a simple, effective,
 -  A footer that links to the GitHub repo and a list of who is on the team
 
 ### Nice to Have
+- company specific interview questions.
 - A chat icon that will display a popup when clicked to allow the user to ask for help from the AI agent
 - Allow administrators to modify, add, or remove questions
 - Authenticate users via Google or GitHub to increase the security
