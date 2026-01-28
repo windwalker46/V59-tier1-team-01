@@ -18,5 +18,6 @@ def frontend_files(filename):
 def health():
     return {"status": "ok"}
 
+# Run the app
 if __name__ == "__main__":
     app.run(debug=True)
