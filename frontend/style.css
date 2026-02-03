@@ -47,3 +47,32 @@ button {
   background-color: #47EB99;
   font-weight: bold;
 }
+
+#selection_panel {
+  margin-top: 24px;
+  padding: 16px;
+  width: 320px;
+
+  background-color: #f9fafb;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+#panel_options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.option_item {
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.hidden {
+  display: none;
+}

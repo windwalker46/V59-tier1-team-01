@@ -1,25 +1,32 @@
 let flashcardsData = [];
 
-// load flashcards from JSON file
+// Load flashcards from JSON file
 async function loadFlashcards() {
   const res = await fetch("flashcards.json");
   const data = await res.json();
   flashcardsData = data;
 }
 
-// Show roles on the page
+// Show roles in the selection panel
 function showRoles() {
-  const roleList = document.getElementById("role_list");
-  roleList.innerHTML = "";
-
+  const panel = document.getElementById("selection_panel");
+  const panelTitle = document.getElementById("panel_title");
+  const panelOptions = document.getElementById("panel_options");
+  // Make sure the panel is visible
+  panel.classList.remove("hidden");
+  panelTitle.textContent = "Select a Role";
+  panelOptions.innerHTML = "";
+  // Render each role
   flashcardsData.forEach(roleObject => {
     const roleItem = document.createElement("div");
+    roleItem.className = "option_item";
     roleItem.textContent = roleObject.role;
-    roleList.appendChild(roleItem);
+
+    panelOptions.appendChild(roleItem);
   });
 }
 
-// run when page has loaded
+// Run when page has fully loaded
 document.addEventListener("DOMContentLoaded", () => {
   loadFlashcards();
   const selectRoleButton = document.querySelector(".role_button");
