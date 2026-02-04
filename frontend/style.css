@@ -58,6 +58,12 @@ button {
   border-radius: 6px;
 }
 
+#selection_summary {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #333;
+}
+
 #panel_options {
   display: flex;
   flex-direction: column;
@@ -80,4 +86,9 @@ button {
 
 .hidden {
   display: none;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

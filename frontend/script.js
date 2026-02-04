@@ -30,27 +30,120 @@ function showRoles() {
 
     roleItem.addEventListener("click", () => {
       selectedRole = roleObject.role;
-      highlightSelectedRole(panelOptions, roleItem);
+      selectedTier = null;
+      selectedTopic = null;
+
+      highlightSelected(panelOptions, roleItem);
+      updateSelectionText();
+      updateButtonState();
     });
 
     panelOptions.appendChild(roleItem);
   });
 }
 
-// Highlight the selected role
-function highlightSelectedRole(panelOptions, selectedItem) {
-  const allOptions = panelOptions.querySelectorAll(".option_item");
-  
-  allOptions.forEach(option => {
-    option.classList.remove("selected");
+// Show tier options
+function showTiers() {
+  if (!selectedRole) return;
+
+  const panel = document.getElementById("selection_panel");
+  const panelTitle = document.getElementById("panel_title");
+  const panelOptions = document.getElementById("panel_options");
+
+  panel.classList.remove("hidden");
+  panelTitle.textContent = "Select a Tier Level";
+  panelOptions.innerHTML = "";
+
+  const tiers = ["Tier 1", "Tier 2", "Tier 3"];
+
+  tiers.forEach(tier => {
+    const tierItem = document.createElement("div");
+    tierItem.className = "option_item";
+    tierItem.textContent = tier;
+
+    tierItem.addEventListener("click", () => {
+      selectedTier = tier;
+      selectedTopic = null;
+
+      highlightSelected(panelOptions, tierItem);
+      updateSelectionText();
+      updateButtonState();
+    });
+
+    panelOptions.appendChild(tierItem);
   });
+}
+
+// Show topic options
+function showTopics() {
+  if (!selectedRole || !selectedTier) return;
+
+  const panel = document.getElementById("selection_panel");
+  const panelTitle = document.getElementById("panel_title");
+  const panelOptions = document.getElementById("panel_options");
+
+  panel.classList.remove("hidden");
+  panelTitle.textContent = "Select a Topic";
+  panelOptions.innerHTML = "";
+
+  const topics = ["General", "Behavioral", "Technical"];
+
+  topics.forEach(topic => {
+    const topicItem = document.createElement("div");
+    topicItem.className = "option_item";
+    topicItem.textContent = topic;
+
+    topicItem.addEventListener("click", () => {
+      selectedTopic = topic;
+
+      highlightSelected(panelOptions, topicItem);
+      updateSelectionText();
+      updateButtonState();
+    });
+
+    panelOptions.appendChild(topicItem);
+  });
+}
+
+// Highlight selected option
+function highlightSelected(panelOptions, selectedItem) {
+  const allOptions = panelOptions.querySelectorAll(".option_item");
+  allOptions.forEach(option => option.classList.remove("selected"));
   selectedItem.classList.add("selected");
+}
+
+// Update text showing current selections
+function updateSelectionText() {
+  document.getElementById("selected_role").textContent =
+    selectedRole ?? "None";
+
+  document.getElementById("selected_tier").textContent =
+    selectedTier ?? "None";
+
+  document.getElementById("selected_topic").textContent =
+    selectedTopic ?? "None";
+}
+
+// Update buttons based on progress
+function updateButtonState() {
+  document.querySelector(".tier_button").disabled = !selectedRole;
+  document.querySelector(".topic_button").disabled = !selectedTier;
+  document.querySelector(".generate_button").disabled =
+    !(selectedRole && selectedTier && selectedTopic);
 }
 
 // Run when page has fully loaded
 document.addEventListener("DOMContentLoaded", () => {
   loadFlashcards();
-  const selectRoleButton = document.querySelector(".role_button");
-  // Click handler to show roles
-  selectRoleButton.addEventListener("click", showRoles);
+  document.querySelector(".role_button")
+    .addEventListener("click", showRoles);
+
+  document.querySelector(".tier_button")
+    .addEventListener("click", showTiers);
+
+  document.querySelector(".topic_button")
+    .addEventListener("click", showTopics);
+
+  updateSelectionText();
+  updateButtonState();
 });
