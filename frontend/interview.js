@@ -6,6 +6,7 @@ let attemptsLeft = 2;
 let correctCount = 0;
 let wrongCount = 0;
 let questionsShown = 0;
+let pendingContinueAction = null;
 
 const MAX_QUESTIONS = 5;
 
@@ -19,8 +20,70 @@ function getSelections() {
   };
 }
 
+// Navigation function
 function goHome() {
   window.location.href = "index.html";
+}
+
+// Feedback message
+function clearFeedback() {
+  const feedback = document.getElementById("answer_feedback");
+  if (!feedback) return;
+
+  feedback.classList.add("hidden");
+  feedback.classList.remove("success", "error", "info");
+  feedback.innerHTML = "";
+  setContinueAction(null);
+}
+
+function setAnswerInputsDisabled(disabled) {
+  document
+    .querySelectorAll('input[name="answer"]')
+    .forEach(input => {
+      input.disabled = disabled;
+    });
+}
+
+function setContinueAction(action) {
+  pendingContinueAction = typeof action === "function" ? action : null;
+
+  const continueButton = document.getElementById("continue_button");
+  if (!continueButton) return;
+
+  continueButton.disabled = pendingContinueAction === null;
+}
+
+function handleContinueClick() {
+  if (typeof pendingContinueAction !== "function") return;
+
+  const action = pendingContinueAction;
+  clearFeedback();
+  action();
+}
+
+// Show feedback message
+function showFeedback(title, message, tone = "info", continueHandler = null) {
+  const feedback = document.getElementById("answer_feedback");
+  if (!feedback) return;
+
+  const hasContinue = typeof continueHandler === "function";
+
+  feedback.classList.remove("hidden", "success", "error", "info");
+  feedback.classList.add(tone);
+  feedback.innerHTML = `
+    <p class="feedback_title">${title}</p>
+    <p class="feedback_message">${message}</p>
+  `;
+
+  if (hasContinue) {
+    document.getElementById("submit_answer").disabled = true;
+    setAnswerInputsDisabled(true);
+    setContinueAction(continueHandler);
+    return;
+  }
+
+  setContinueAction(null);
+  document.getElementById("submit_answer").disabled = false;
 }
 
 // Load JSON file
@@ -40,6 +103,8 @@ function showQuestion() {
   if (!currentQuestions.length) return;
 
   const q = currentQuestions[currentIndex];
+  clearFeedback();
+  document.getElementById("submit_answer").disabled = false;
 
   document.getElementById("question_progress").textContent =
     `Question ${questionsShown + 1} of ${MAX_QUESTIONS}`;
@@ -68,6 +133,8 @@ function showQuestion() {
 
     container.appendChild(label);
   });
+
+  setAnswerInputsDisabled(false);
 }
 
 // Move to next question
@@ -90,38 +157,28 @@ function nextQuestion() {
 // Handle answer submission
 function submitAnswer() {
   const selected = document.querySelector('input[name="answer"]:checked');
-  if (!selected) return;
+  if (!selected) {
+    showFeedback("Select an answer first", "Pick one option before submitting.", "info");
+    return;
+  }
 
   const q = currentQuestions[currentIndex];
   const chosen = selected.value;
 
   if (chosen === q.answer) {
     correctCount++;
-
-    alert(
-      "Correct!\n\n" +
-      "Explanation:\n" +
-      q.rationale
-    );
-
-    nextQuestion();
+    showFeedback("Correct", q.rationale, "success", nextQuestion);
   } else {
     attemptsLeft--;
 
     if (attemptsLeft <= 0) {
       wrongCount++;
-
-      alert(
-        "Out of attempts.\n\n" +
-        `Correct answer: ${q.answer}\n\n` +
-        "Explanation:\n" +
-        q.rationale
-      );
-
-      nextQuestion();
+      const message = `Correct answer: ${q.answer}\n\n${q.rationale}`;
+      showFeedback("Out of attempts", message, "error", nextQuestion);
     } else {
       document.getElementById("attempts_text").textContent =
         `Attempts left: ${attemptsLeft}`;
+      showFeedback("Not quite", `Try again. Attempts left: ${attemptsLeft}.`, "error");
     }
   }
 }
@@ -166,4 +223,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   document
     .querySelector(".back_button")
     .addEventListener("click", goHome);
+
+  document
+    .getElementById("continue_button")
+    .addEventListener("click", handleContinueClick);
 });
