@@ -1,0 +1,191 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* index.html */
+#page_container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#home_controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+#home_controls button {
+  width: 280px;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.role_button {
+  background-color: #ffcd7d;
+}
+
+.tier_button {
+  background-color: #ffefd5;
+}
+
+.topic_button {
+  background-color: #f8d295;
+}
+
+.generate_button {
+  background-color: #47eb99;
+  font-weight: bold;
+}
+
+#selection_panel {
+  margin-top: 24px;
+  padding: 16px;
+  width: 320px;
+  background-color: #f9fafb;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+#selection_summary {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #333;
+}
+
+#panel_options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.option_item {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.option_item.selected {
+  background-color: #e0f2fe;
+  border-color: #0284c7;
+  font-weight: bold;
+}
+
+#home_controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hidden {
+  display: none;
+}
+
+/* landing.html */
+body.landing-page {
+  height: 100vh;
+  background: #fff;
+  text-align: center;
+}
+
+body.landing-page .page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body.landing-page .header {
+  margin-top: 50px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+body.landing-page .buttons {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+body.landing-page .login,
+body.landing-page .guest {
+  width: 170px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+body.landing-page .login {
+  background: #32c26a;
+}
+
+body.landing-page .guest {
+  background: #5fc3be;
+}
+
+body.landing-page .login:hover,
+body.landing-page .guest:hover {
+  opacity: 0.8;
+}
+
+body.landing-page .footer {
+  margin-bottom: 40px;
+  font-size: 16px;
+  color: gray;
+}
+
+/* login.html */
+body.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f2f6fb;
+}
+
+.login-panel {
+  background: #fff;
+  padding: 40px;
+  width: 320px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-panel h2 {
+  margin: 0 0 20px;
+  color: #333;
+}
+
+.login-panel input {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.login-panel button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #32c26a;
+  color: #fff;
+  cursor: pointer;
+}
