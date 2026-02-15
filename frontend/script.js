@@ -1,3 +1,4 @@
+
 let flashcardsData = [];
 
 // Variables to store selected options
@@ -5,7 +6,7 @@ let selectedRole = null;
 let selectedTier = null;
 let selectedTopic = null;
 
-// Load flashcards from JSON file
+// load flashcards from JSON file and log to console
 async function loadFlashcards() {
   const res = await fetch("flashcards.json");
   const data = await res.json();
