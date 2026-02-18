@@ -31,19 +31,17 @@ with immediate feedback and a final score summary.
 ### Feedback Screen
 ![Feedback Screen](docs/screenshots/feedback.png)
 
-## Running the Project
-
 ### Prerequisites
 - Python 3.11+
 - pip
 
 ### Running the Project
 
-### Deployed version
+## Deployed version
 - Open in browser:
 - https://v59-tier1-team-01.onrender.com
 
-### Local Run
+## Local Run
 1. Clone the repo:
    ```bash
    git clone https://github.com/windwalker46/V59-tier1-team-01.git
