@@ -7,6 +7,12 @@ body {
   display: none;
 }
 
+#interview_screen.hidden,
+#results_screen.hidden,
+#feedback_screen.hidden {
+  display: none;
+}
+
 #interview_container {
   min-height: 100vh;
 
@@ -90,10 +96,6 @@ body {
 .feedback_message {
   margin: 0;
   white-space: pre-wrap;
-}
-
-#save_question {
-  font-size: 14px;
 }
 
 #bottom_controls {
