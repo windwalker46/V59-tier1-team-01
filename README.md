@@ -1,21 +1,63 @@
-# voyage-tasks
+# Interview Question Generator
 
-Your project's `readme` is as important to success as your code. For 
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
+## Overview
+We built this project to help users practice interview questions in a structured way.
+The app lets users select a role, tier and topic then runs a short interview session
+with immediate feedback and a final score summary.
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point - 
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
+## Features
+- Landing Page with Login or Guest verification
+- Role / Tier / Topic selection
+- Interview session featuring flashcards with multiple choice questions
+- Two attempts per question
+- Feedback for questions immediately
+- Final results screen with correct, wrong and total percent
+- Feedback screen showing current answered questions and explanations
 
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
+## Screenshots
 
-> Own it & Make it your Own!
+### Landing Page
+![Landing Page](docs/screenshots/landing.png)
+
+### Selection Screen
+![Selection Screen](docs/screenshots/selection.png)
+
+### Interview Screen
+![Interview Screen](docs/screenshots/interview.png)
+
+### Results Screen
+![Results Screen](docs/screenshots/results.png)
+
+### Feedback Screen
+![Feedback Screen](docs/screenshots/feedback.png)
+
+## Running the Project
+
+### Prerequisites
+- Python 3.11+ (or compatible)
+- pip
+
+### Local Run
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/windwalker46/V59-tier1-team-01.git
+   cd V59-tier1-team-01
+
+2. Install requirements:
+   ```bash
+   pip install -r backend/requirements.txt
+
+3. Start the app:
+   ```bash
+   python backend/app.py
+
+4. Open:
+   - http://127.0.0.1:5000
+
+## Requirements
+- See requirements.txt
 
 ## Team Documents
-
-You may find these helpful as you work together to organize your project.
 
 - [Team Project Ideas](./docs/team_project_ideas.md)
 - [Team Decision Log](./docs/team_decision_log.md)
