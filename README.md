@@ -34,8 +34,14 @@ with immediate feedback and a final score summary.
 ## Running the Project
 
 ### Prerequisites
-- Python 3.11+ (or compatible)
+- Python 3.11+
 - pip
+
+### Running the Project
+
+### Deployed version
+- Open in browser:
+- https://v59-tier1-team-01.onrender.com
 
 ### Local Run
 1. Clone the repo:
