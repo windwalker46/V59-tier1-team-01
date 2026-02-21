@@ -1,12 +1,11 @@
 
 let flashcardsData = [];
 
-// Variables to store selected options
 let selectedRole = null;
 let selectedTier = null;
 let selectedTopic = null;
 
-// load flashcards from JSON file and log to console
+// load flashcards from JSON file
 async function loadFlashcards() {
   const res = await fetch("flashcards.json");
   const data = await res.json();
@@ -113,7 +112,7 @@ function highlightSelected(panelOptions, selectedItem) {
   selectedItem.classList.add("selected");
 }
 
-// Update text showing current selections
+// Update text
 function updateSelectionText() {
   document.getElementById("selected_role").textContent =
     selectedRole ?? "None";
@@ -125,7 +124,7 @@ function updateSelectionText() {
     selectedTopic ?? "None";
 }
 
-// Update buttons based on progress
+// Update buttons
 function updateButtonState() {
   document.querySelector(".tier_button").disabled = !selectedRole;
   document.querySelector(".topic_button").disabled = !selectedTier;
@@ -133,7 +132,7 @@ function updateButtonState() {
     !(selectedRole && selectedTier && selectedTopic);
 }
 
-// Move to interview/questions page when everything is selected
+// Start interview
 function startInterview() {
   if (!selectedRole || !selectedTier || !selectedTopic) return;
 
